@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5434,
+            "driver": "PostgreSQL",
+            "database": "exchange_rates_db",
+            "username": "etl_user",
+            "password": "etl_password",
+            "name": "api_to_postgress_sql"
+        }
+    ]
+}

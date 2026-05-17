@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: api_to_postgres_etl_db
+    environment:
+      POSTGRES_DB: exchange_rates_db
+      POSTGRES_USER: etl_user
+      POSTGRES_PASSWORD: etl_password
+    ports:
+     - "5434:5432"
+    volumes:
+     - postgres_data:/var/lib/postgresql/data
+     - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

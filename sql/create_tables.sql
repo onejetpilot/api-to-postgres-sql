@@ -11,6 +11,6 @@ CREATE TABLE IF NOT EXISTS exchange_rates (
     base_currency TEXT NOT NULL,
     quote_currency TEXT NOT NULL,
     rate NUMERIC(18, 6) NOT NULL,
-    leaded_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    loaded_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (rate_date, base_currency, quote_currency)
 );

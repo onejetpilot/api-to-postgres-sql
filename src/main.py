@@ -1,12 +1,16 @@
 from extract import fetch_exchange_rates
 from transform import transform_exchange_rates
 from load import load_to_staging, load_to_core
+from datetime import date
 
 def main() -> None:
+
+    end_date = date.today().isoformat()
+    
     raw_data = fetch_exchange_rates(
-        start_date='2024-01-01',
-        end_date='2024-01-31',
-        base_currency='EUR',
+        start_date='2026-01-01',
+        end_date=end_date,
+        base_currency='RUB',
         quote_currencies=['USD', 'GBP', 'JPY', 'CNY', 'CHF']
     )
 

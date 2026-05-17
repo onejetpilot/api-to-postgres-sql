@@ -1,22 +1,22 @@
 import pandas as pd
 
-def transform_exchange_rates(row_data: list[dict]) -> pd.DataFrame:
+def transform_exchange_rates(raw_data: list[dict]) -> pd.DataFrame:
     """
     Преобразует данные о курсах валют в DataFrame
     """
-    df = pd.DataFrame(row_data)
+    df = pd.DataFrame(raw_data)
 
     df = df.rename(
         columns={
             'date': 'rate_date',
             'base': 'base_currency',
-            'quote': 'quote_currence',
+            'quote': 'quote_currency',
         }
     )
 
     df['rate_date'] = pd.to_datetime(df['rate_date']).dt.date
     df['base_currency'] = df['base_currency'].astype(str)
-    df['quote_currency'] = df['quote_currence'].astype(str)
+    df['quote_currency'] = df['quote_currency'].astype(str)
     df['rate'] = df['rate'].astype(float)
 
     df = df.drop_duplicates(subset=['rate_date', 'base_currency', 'quote_currency'])
